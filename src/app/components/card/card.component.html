@@ -1,0 +1,14 @@
+<div class="card shadow-sm rounded overflow-hidden" style="width: 16rem">
+  <img
+    [src]="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+    [alt]="movie.title"
+    class="card-img-top"
+    style="height: 24rem; object-fit: cover"
+  />
+
+  <div class="card-body bg-dark text-white">
+    <h5 class="card-title mb-1">{{ movie.title }}</h5>
+    <p class="card-text mb-1">Año: {{ movie.release_date.substring(0, 4) }}</p>
+    <p class="card-text">Nota: {{ movie.vote_average }}/10</p>
+  </div>
+</div>

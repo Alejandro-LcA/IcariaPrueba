@@ -1,0 +1,72 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="p-fluid p-formgrid p-grid"
+>
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <input
+      class="form-control flex-grow-1"
+      pInputText
+      id="name"
+      formControlName="name"
+      placeholder="Nombre de la película"
+    />
+    <button pButton type="submit" label="Buscar"></button>
+  </div>
+  <p-panel header="Filtros" [collapsed]="true" [toggleable]="true">
+    <div class="row">
+      <!-- Géneros -->
+      <div class="col-12 col-md-6 mb-3">
+        <p-multiSelect
+          *ngIf="genres.length > 0"
+          id="genres"
+          formControlName="genres"
+          [options]="genres"
+          optionLabel="label"
+          display="chip"
+          class="form-control w-50"
+          placeholder="Selecciona géneros"
+        ></p-multiSelect>
+      </div>
+
+      <!-- Idioma -->
+      <div class="col-12 col-md-6 mb-3">
+        <p-dropdown
+          id="originalLanguage"
+          formControlName="originalLanguage"
+          [options]="languages"
+          placeholder="Idioma original:"
+          class="form-control w-50"
+        ></p-dropdown>
+      </div>
+
+      <!-- Año -->
+      <div class="col-12 col-md-6 mb-3">
+        <input
+          pInputText
+          id="year"
+          formControlName="year"
+          placeholder="Escribe el año"
+          type="number"
+          class="form-control w-50"
+        />
+      </div>
+
+      <!-- Nota -->
+      <div class="col-12 col-md-6 mb-3">
+        <label for="voteAverage">
+          Nota de la película: {{ form.get("voteAverage")?.value }}
+        </label>
+        <p-slider
+          formControlName="voteAverage"
+          [min]="0"
+          [max]="10"
+          [step]="0.5"
+          [range]="false"
+          [style]="{ width: '90%' }"
+          class="m-3"
+        ></p-slider>
+      </div>
+    </div>
+  </p-panel>
+</form>
