@@ -30,14 +30,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getMovies({}).subscribe((response) => {
       this.movies = response.results;
-      console.log(this.movies);
     });
   }
 
   onFiltersChanged(filters: SearchFilter) {
     this.movieService.getMovies(filters).subscribe((response) => {
-      this.movies = response.results;
-      console.log(this.movies);
+      if (filters.voteAverage) {
+        this.movies = response.results.filter(
+          (movie) => movie.vote_average > filters.voteAverage!
+        );
+      } else this.movies = response.results;
     });
   }
 }

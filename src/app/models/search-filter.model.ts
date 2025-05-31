@@ -5,6 +5,6 @@ export interface SearchFilter {
   genres?: Genre[];
   originalLanguage?: string;
   year?: number;
-  voteAverage?: number | [number, number];
+  voteAverage?: number;
   page?: number;
 }

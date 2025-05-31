@@ -43,8 +43,6 @@ export class MovieService {
     }
 
     const url = filters.name ? '/search/movie' : '/discover/movie';
-    console.log(`${this.apiUrl}${url}`, { params });
-
     return this.http.get<any>(`${this.apiUrl}${url}`, { params });
   }
 }

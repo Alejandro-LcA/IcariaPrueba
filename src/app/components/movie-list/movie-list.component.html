@@ -1,11 +1,14 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-      @for (movie of movies; track $index) {
-
-      <app-card [movie]="movie"></app-card>
-
-      }
-    </div>
+<div class="d-flex flex-column align-items-center justify-content-around">
+  @for (row of items; track $index) {
+  <div
+    class="d-flex flex-column flex-md-row align-items-center justify-content-around"
+  >
+    <app-card class="m-3 align-self-stretch" [movie]="row[0]"></app-card>
+    @if (row[1]) {
+    <app-card class="m-3 align-self-stretch" [movie]="row[1]"></app-card>
+    } @if (row[2]) {
+    <app-card class="m-3 align-self-stretch" [movie]="row[2]"></app-card>
+    }
   </div>
+  }
 </div>
